@@ -11,11 +11,15 @@ from bs4 import BeautifulSoup
 from googletrans import Translator
 import youtube_dl
 #ANTIJS_V2
-cl = LineClient()
-#cl = LineClient(authToken='EzGLNUjacMSB4Nh7YBP8.hpxjjUAP7C1rRLHBiUlNUa.hCPTyp9StZW9Yq+tr/zu3n9FMS1f9yl0F/E4tztFqOU=')
+print ("======[ MEMBUAT AKUN B❂TTR❂X Bots]======")
+print ("===========[ ⊰์◉⊱B❂TTR❂X B❂T$⊰์◉⊱ ]=============")
+#cl = LineClient()
+cl = LineClient(authToken='Token_kamu_disini')
 cl.log("Auth Token : " + str(cl.authToken))
 channel = LineChannel(cl)
 cl.log("Channel Access Token : " + str(channel.channelAccessToken))
+print ("======⊰์◉⊱B❂TTR❂X B❂T$⊰์◉⊱=======")
+print ("======⊰์◉⊱B❂TS SIAP DIGUNAKAN⊰์◉⊱=======")
 
 poll = LinePoll(cl)
 call = cl
