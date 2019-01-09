@@ -13,8 +13,8 @@ import youtube_dl
 #ANTIJS_V2
 print ("======[ MEMBUAT AKUN B❂TTR❂X Bots]======")
 print ("===========[ ⊰์◉⊱B❂TTR❂X B❂T$⊰์◉⊱ ]=============")
-#cl = LineClient()
-cl = LineClient(authToken='Token_kamu_disini')
+cl = LineClient()
+#cl = LineClient(authToken='Token_kamu_disini')
 cl.log("Auth Token : " + str(cl.authToken))
 channel = LineChannel(cl)
 cl.log("Channel Access Token : " + str(channel.channelAccessToken))
