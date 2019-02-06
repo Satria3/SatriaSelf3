@@ -1,6 +1,11 @@
 import LINEPY
 from LINEPY import *
 from akad.ttypes import *
+from thrift.unverting import *
+from thrift.TMultiplexedProcessor import *
+from thrift.TSerialization import *
+from thrift.TRecursive import *
+from thrift import transport, protocol, server
 from multiprocessing import Pool, Process
 from time import sleep
 import pytz, datetime, pafy, time, timeit, random, sys, ast, re, os, json, subprocess, threading, string, codecs, requests, ctypes, urllib, wikipedia
@@ -14,7 +19,7 @@ import youtube_dl
 print ("======[ MEMBUAT AKUN B❂TTR❂X Bots]======")
 print ("===========[ ⊰์◉⊱B❂TTR❂X B❂T$⊰์◉⊱ ]=============")
 cl = LineClient()
-#cl = LineClient(authToken='Token_kamu_disini')
+#cl = LineClient(authToken='YOKEN_KAMU_MASUKIN DI SINI')
 cl.log("Auth Token : " + str(cl.authToken))
 channel = LineChannel(cl)
 cl.log("Channel Access Token : " + str(channel.channelAccessToken))
@@ -23,9 +28,9 @@ print ("======⊰์◉⊱B❂TS SIAP DIGUNAKAN⊰์◉⊱=======")
 
 poll = LinePoll(cl)
 call = cl
-creator = ["u1608ae21e5de2547b5fa8707b21ca220"]
-owner = ["u1608ae21e5de2547b5fa8707b21ca220"]
-admin = ["u1608ae21e5de2547b5fa8707b21ca220"]
+creator = ["u1608ae21e5de2547b5fa8707b21ca220","u303c7b0e45475464c6e2e74a82137ed0"] #ganti sama mid kamu
+owner = ["u1608ae21e5de2547b5fa8707b21ca220"] #Ganti sama mid kamu 
+admin = ["u1608ae21e5de2547b5fa8707b21ca220","u303c7b0e45475464c6e2e74a82137ed0"] #Ganti sama mid kamu
 staff = ["u1608ae21e5de2547b5fa8707b21ca220"]
 mid = cl.getProfile().mid
 KAC = [cl]
@@ -125,12 +130,14 @@ cctv = {
     "sidermem":{}
 }
 
-#with open('creator.json', 'r') as fp:
-    #creator = json.load(fp)
-#with open('owner.json', 'r') as fp:
-    #owner = json.load(fp)
-#with open('admin.json', 'r') as fp:
-    #admin = json.load(fp)      
+with open('creator.json', 'r') as fp:
+    creator = json.load(fp)
+with open('owner.json', 'r') as fp:
+    owner = json.load(fp)
+with open('admin.json', 'r') as fp:
+    admin = json.load(fp)      
+with open('staff.json', 'r') as fp:
+    staff = json.load(fp) 
     
 Setbot1 = codecs.open("setting.json","r","utf-8")
 Setmain = json.load(Setbot1)
@@ -356,7 +363,7 @@ def sendMeention2(to, text="", mids=[]):
 def siderMembers(to, mid):
     try:
         arrData = ""
-        textx = "Sider「{}」\nwkwkwk".format(str(len(mid)))
+        textx = "Wkwkwk".format(str(len(mid)))
         arr = []
         no = 1
         num = 2
@@ -377,13 +384,14 @@ def siderMembers(to, mid):
                 except:
                     no = "\n┗━━[ Success ]"
         cl.sendMessage(to, textx, {'MENTION': str('{"MENTIONEES":' + json.dumps(arr) + '}')}, 0)
+        cl.sendMessage(to, None, contentMetadata={"STKID":"2713768","STKPKGID":"3524","STKVER":"1"}, contentType=7)
     except Exception as error:
         cl.sendMessage(to, "[ INFO ] Error :\n" + str(error))
         
 def welcomeMembers(to, mid):
     try:
         arrData = ""
-        textx = "「{}」\nHaii  ".format(str(len(mid)))
+        textx = "Haii  ".format(str(len(mid)))
         arr = []
         no = 1
         num = 2
@@ -411,7 +419,7 @@ def welcomeMembers(to, mid):
 def leaveMembers(to, mid):
     try:
         arrData = ""
-        textx = "「{}」\nByee  ".format(str(len(mid)))
+        textx = "Byee  ".format(str(len(mid)))
         arr = []
         no = 1
         num = 2
@@ -1181,7 +1189,7 @@ def bot(op):
                                         if mention["M"] not in lists:
                                             lists.append(mention["M"])
                                     for ls in lists:
-                                        path = "http://dl.profile.line-cdn.net/" + ki.getContact(ls).pictureStatus
+                                        path = "http://dl.profile.line-cdn.net/" + cl.getContact(ls).pictureStatus
                                         cl.sendImageWithURL(msg.to, str(path))
                             
                         elif cmd.startswith("stealcover "):
@@ -1463,23 +1471,23 @@ def bot(op):
                         elif cmd == "tag" or text.lower() == '😆':
                           if wait["selfbot"] == True:
                             if msg._from in admin:
-                            	group = cl.getGroup(msg.to)                    
+                            	group = cl.getGroup(msg.to) 
                           Rmem = [contact.mid for contact in group.members]
                           Dmem = len(Rmem)//20
                           try:                          	
                               for mentionMembers in range(Dmem+1):
                                   no = 0
-                                  ret_ = "╔════════════\n   SATRIA [ √ ]\n╚════════════\n╔════════════"
+                                  ret_ = "╔════════════\n   ╯═﷼͜͡❂Satria❂͜͡﷼ [ √ ]\n╚════════════\n╔════════════"
                                   dataMid = []
                                   for dataMention in group.members[mentionMembers*20 : (mentionMembers+1)*20]:
                                       dataMid.append(dataMention.mid)
                                       no += 1
                                       ret_ += "\n╠ [{}] @!".format(str(no))
                                   ret_ += "\n╚══════════════\n╔═══════════════\n   TOTAL MEMBER [ {} ]\n╚═══════════════".format(str(len(dataMid)))
-                                  sendMeention2(msg.to, ret_, dataMid)
+                                  sendMeention2(msg.to, ret_, dataMid)                             
                           except Exception as Ewe:
                               print(Ewe)
-
+                                  
                         elif cmd == "dor" or text.lower() == '😆':
                           if wait["selfbot"] == True:
                             if msg._from in creator:
@@ -1591,7 +1599,7 @@ def bot(op):
                                 get_contact_time_start = time.time()
                                 get_contact = cl.getContact(mid)
                                 get_contact_time = time.time() - get_contact_time_start
-                                cl.sendMessage(msg.to, " »» Speed respon\n\n - Get Profile\n   %.10f\n - Get Contact\n   %.10f\n - Get Group\n   %.10f" % (get_profile_time/3,get_contact_time/3,get_group_time/3))
+                                cl.sendMessage(msg.to, " »» Speed respon\n\n - Get Profile\n   %.10f\n - Get Contact\n   %.10f\n - Get Group\n   %.10f" % (get_profile_time/1000,get_contact_time/1000,get_group_time/1000))
 
                         elif cmd == "speed" or cmd == "sp":
                           if wait["selfbot"] == True:
@@ -1599,7 +1607,7 @@ def bot(op):
                                start = time.time()
                                cl.sendMessage(msg.to, "Speed SatriaSelf...")
                                elapsed_time = time.time() - start
-                               cl.sendMessage(msg.to, "{} detik".format(str(elapsed_time)))
+                               cl.sendMessage(msg.to, "{} detik".format(str(elapsed_time/1000)))
 
                         elif cmd == "cctv on":
                           if wait["selfbot"] == True:
@@ -2021,6 +2029,23 @@ def bot(op):
                                            pass
 
 #===========ADMIN ADD============#
+                        elif ("Creatoradd " in msg.text):
+                          if wait["selfbot"] == True:
+                            if msg._from in creator:
+                               key = eval(msg.contentMetadata["MENTION"])
+                               key["MENTIONEES"][0]["M"]
+                               targets = []
+                               for x in key["MENTIONEES"]:
+                                    targets.append(x["M"])
+                               for target in targets:
+                                       try:
+                                           creator[target] = True
+                                           f=codecs.open('creator.json','w','utf-8')
+                                           json.dump(creator, f, sort_keys=True, indent=4,ensure_ascii=False) 
+                                           cl.sendMessage(msg.to,"Berhasil menambahkan creator")
+                                       except:
+                                           pass                                           
+                                           
                         elif ("Adminadd " in msg.text):
                           if wait["selfbot"] == True:
                             if msg._from in creator:
@@ -2031,10 +2056,12 @@ def bot(op):
                                     targets.append(x["M"])
                                for target in targets:
                                        try:
-                                           admin.append(target)
+                                           admin[target] = True
+                                           f=codecs.open('admin.json','w','utf-8')
+                                           json.dump(admin, f, sort_keys=True, indent=4,ensure_ascii=False) 
                                            cl.sendMessage(msg.to,"Berhasil menambahkan admin")
                                        except:
-                                           pass
+                                           pass                                           
 
                         elif ("Staffadd " in msg.text):
                           if wait["selfbot"] == True:
@@ -2046,10 +2073,12 @@ def bot(op):
                                     targets.append(x["M"])
                                for target in targets:
                                        try:
-                                           staff.append(target)
+                                           staff[target] = True
+                                           f=codecs.open('staff.json','w','utf-8')
+                                           json.dump(staff, f, sort_keys=True, indent=4,ensure_ascii=False) 
                                            cl.sendMessage(msg.to,"Berhasil menambahkan staff")
                                        except:
-                                           pass
+                                           pass                                           
 
                         elif ("Botadd " in msg.text):
                           if wait["selfbot"] == True:
@@ -2066,6 +2095,22 @@ def bot(op):
                                        except:
                                            pass
 
+                        elif ("Creatordell " in msg.text):
+                            if msg._from in creator:
+                               key = eval(msg.contentMetadata["MENTION"])
+                               key["MENTIONEES"][0]["M"]
+                               targets = []
+                               for x in key["MENTIONEES"]:
+                                    targets.append(x["M"])
+                               for target in targets:
+                                       try:
+                                           del creator[target]
+                                           f=codecs.open('creator.json','w','utf-8')
+                                           json.dump(creator, f, sort_keys=True, indent=4,ensure_ascii=False) 
+                                           cl.sendMessage(msg.to,"Berhasil menghapus Creator")
+                                       except:
+                                           pass
+                                           
                         elif ("Admindell " in msg.text):
                             if msg._from in creator:
                                key = eval(msg.contentMetadata["MENTION"])
@@ -2075,7 +2120,9 @@ def bot(op):
                                     targets.append(x["M"])
                                for target in targets:
                                        try:
-                                           admin.remove(target)
+                                           del admin[target]
+                                           f=codecs.open('admin.json','w','utf-8')
+                                           json.dump(admin, f, sort_keys=True, indent=4,ensure_ascii=False) 
                                            cl.sendMessage(msg.to,"Berhasil menghapus admin")
                                        except:
                                            pass
@@ -2089,7 +2136,9 @@ def bot(op):
                                     targets.append(x["M"])
                                for target in targets:
                                        try:
-                                           staff.remove(target)
+                                           del staff[target]
+                                           f=codecs.open('staff.json','w','utf-8')
+                                           json.dump(staff, f, sort_keys=True, indent=4,ensure_ascii=False) 
                                            cl.sendMessage(msg.to,"Berhasil menghapus Staff")
                                        except:
                                            pass
