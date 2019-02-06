@@ -1,11 +1,6 @@
 import LINEPY
 from LINEPY import *
 from akad.ttypes import *
-from thrift.unverting import *
-from thrift.TMultiplexedProcessor import *
-from thrift.TSerialization import *
-from thrift.TRecursive import *
-from thrift import transport, protocol, server
 from multiprocessing import Pool, Process
 from time import sleep
 import pytz, datetime, pafy, time, timeit, random, sys, ast, re, os, json, subprocess, threading, string, codecs, requests, ctypes, urllib, wikipedia
