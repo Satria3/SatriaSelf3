@@ -19,8 +19,8 @@ import requests
 #ANTIJS_V2
 print ("======[ MEMBUAT AKUN B❂TTR❂X Bots]======")
 print ("===========[ ⊰์◉⊱B❂TTR❂X B❂T$⊰์◉⊱ ]=============")
-#cl = LineClient()
-cl = LineClient(authToken='EFhzJ7mGQHdsRlAWHMN0.fGIUiExEjuE1/OChSHYIia.2TV8xg8s5im0MF6y1tp6uIZTINA9lPLhkelxc+5jGfA=')
+cl = LineClient()
+#cl = LineClient(authToken='EFzaG8hOHbbz0VtraAn0.fGIUiExEjuE1/OChSHYIia.1RJAexN6SfZSMQegaf8kgEcGC14ANJmJmsA5aUXDDuA=')
 cl.log("Auth Token : " + str(cl.authToken))
 channel = LineChannel(cl)
 cl.log("Channel Access Token : " + str(channel.channelAccessToken))
@@ -316,7 +316,7 @@ def mentionMembers(to, mid):
         cl.sendMessage(to, "[ INFO ] Error :\n" + str(error))
 
 def mentionMembers1(to, mids=[]):
-  #  if mid in mids: mids.remove(mid)
+   # if mids in mids: mids.remove(mid)
     parsed_len = len(mids)//20+1
     result = '╭───「 ⊰์◉⊱B❂TTR❂X B❂T$⊰์◉⊱ 」\n'
     mention = '@zeroxyuuki\n'
@@ -1008,8 +1008,8 @@ def bot(op):
                     to = msg.to
                if msg.contentType == 16:
                      url = msg.contentMetadata["postEndUrl"]
-                     cl.like(url[25:58], url[66:], likeType=1001)
-                     cl.createComment(url[25:58], url[66:], wait["comment"])
+                     #cl.likePost(url[25:58], url[66:], likeType=1001)
+                     #cl.createComment(url[25:58], url[66:], wait["comment"])
                if msg.contentType == 0:
                     msg_dict[msg.id] = {"text":msg.text,"from":msg._from,"createdTime":msg.createdTime}
                if msg.contentType == 1:
@@ -1050,8 +1050,8 @@ def bot(op):
                                 else:
                                     auth = "\n╠ Penulis : {}".format(str(msg.contentMetadata["serviceName"]))
                                 purl = "\n╠ URL : {}".format(str(msg.contentMetadata["postEndUrl"]).replace("line://","https://me.me/R/"))
-                                cl.like(purl[25:58], purl[66:], likeType=1001)
-                                cl.createComment(purl[25:58], purl[66:], wait["comment"])
+                                #cl.like(purl[25:58], purl[66:], likeType=1001)
+                                #cl.createComment(purl[25:58], purl[66:], wait["comment"])
                                 ret_ += auth
                                 ret_ += purl
                                 if "mediaOid" in msg.contentMetadata:
@@ -2085,18 +2085,214 @@ def bot(op):
                                   cl.sendMessage(msg.to, "Sudak tidak aktif")                                
 #===========Hiburan============#
                         elif cmd.startswith("musik: "):
-                            query = msg.text.replace("musik","")
-                            search = query.replace(" ","+")
-                            result = requests.get("https://api.zicor.ooo/joox.php?song={}".format(search))
-                            data = result.text
-                            data = json.loads(data)
-                            ret_ = "-•••>> Play Music <<•••-"
-                            ret_ += "\n- Judul : {}".format(data["title"])
-                            ret_ += "\n- Artis : {}".format(data["singer"])
-                            ret_ += "\n- Lirik :\n{}".format(data["lyric"])
-                            cl.sendImageWithURL(to, data["image"])
-                            #cl.sendMessage(msg_id, to, ret_)
-                            cl.sendAudioWithURL(to, data["url"])
+                          if msg._from in admin:    
+                            try:
+                                dan = msg.text.replace("musik2: ","")
+                                r = requests.get("https://api.zicor.ooo/joox.php?song={}"+urllib.parse.quote(dan))
+                                data = r.json()
+                                l = data["lyric"].replace("ti:","Judul: ")
+                                i = l.replace("ar:","Penyanyi: ")
+                                r = i.replace("al:","Album: ")
+                                ii = r.replace("[by:]","")
+                                k = ii.replace("[offset:0]","")
+                                lirik = k.replace("***Lirik didapat dari pihak ketiga***\n","")
+                                cl.sendImageWithURL(msg.to, data["image"])
+                                t = "[ Music ]"
+                                t += "\n\nJudul: "+str(data["title"])
+                                t+="\nPenyanyi: "+str(data["singer"])
+                                t+="\n\n[ Finish ]\n\n"+str(lirik)
+                                cl.sendMessage(msg.to, str(t))
+                                cl.sendAudioWithURL(msg.to, data["url"])
+                            except Exception as error:
+                                pass
+
+                        elif cmd.startswith("playlist "):
+                          if msg._from in admin:    
+                            try:
+                                sep = msg.text.split(" ")
+                                query = msg.text.replace(sep[0] + " ","")
+                                cond = query.split(":")
+                                search = str(cond[0])
+                                result = requests.get("https://api.zicor.ooo/joox.php?song={}".format(str(search)))
+                                data = result.text
+                                data = json.loads(data)
+                                if len(cond) == 1:
+                                    num = 0
+                                    ret_ = "━━━━[ List Lagu ]━━━━"
+                                    for music in data["result"]:
+                                        num += 1
+                                        ret_ += "\n {}. {}".format(str(num), str(music["single"]))
+                                    ret_ += "\n  ━━[ Total {} Lagu ]━━".format(str(len(data["result"])))
+                                    ret_ += "\n\nUntuk Melihat Details Musik, Silahkan Ketik \n❧「 {}Playlist {}:nomor 」 ".format(str(),str(search))
+                                    ret_ += "\n⏩「 {}Lirik {}:nomor 」 ".format(str(),str(search))
+                                    cl.sendMessage(msg.to, str(ret_))
+                                elif len(cond) == 2:
+                                    num = int(cond[1])
+                                    if num <= len(data["result"]):
+                                        music = data["result"][num - 1]
+                                        result = requests.get("http://api.ntcorp.us/joox/song_info?sid={}".format(str(music["sid"])))
+                                        data = result.text
+                                        data = json.loads(data)
+                                        if data["result"] != []:
+                                            ret_ = "┏━━━━[ Detail Musik ]━━━━"
+                                            ret_ += "\n┃┃ Title : {}".format(str(data["result"]["song"]))
+                                            ret_ += "\n┃┃ Album : {}".format(str(data["result"]["album"]))
+                                            ret_ += "\n┃┃ Size : {}".format(str(data["result"]["size"]))
+                                            ret_ += "\n┗━━[ Tunggu Audionya ]━━━"
+                                            cl.sendMessage(msg.to, str(ret_))
+                                            cl.sendAudioWithURL(msg.to, str(data["result"]["mp3"][0]))
+                            except Exception as error:
+                                pass
+                            
+                        elif cmd.startswith("lirik "):
+                          if msg._from in admin:    
+                            try:
+                                sep = msg.text.split(" ")
+                                query = msg.text.replace(sep[0] + " ","")
+                                cond = query.split(":")
+                                search = cond[0]
+                                api = requests.get("https://api.zicor.ooo/joox.php?song={}".format(str(search)))
+                                data = api.text
+                                data = json.loads(data)
+                                if len(cond) == 1:
+                                    num = 0
+                                    ret_ = "━━━━[ List Lirik ]━━━━"
+                                    for lyric in data["results"]:
+                                        num += 1
+                                        ret_ += "\n {}. {}".format(str(num), str(lyric["single"]))
+                                    ret_ += "\n  ━━[ Total {} Lagu ]━━".format(str(len(data["results"])))
+                                    ret_ += "\n\nUntuk Melihat Details Musik, Silahkan Ketik \n❧「 {}Lirik {}:nomor 」".format(str(),str(search))
+                                    ret_ += "\n⏩「 {}Playlist {}:nomor 」 ".format(str(),str(search))
+                                    cl.sendMessage(msg.to, str(ret_))
+                                elif len(cond) == 2:
+                                    num = int(cond[1])
+                                    if num <= len(data["results"]):
+                                        lyric = data["results"][num - 1]
+                                        api = requests.get("http://api.secold.com/joox/sid/{}".format(str(lyric["songid"])))
+                                        data = api.text
+                                        data = json.loads(data)
+                                        lyrics = data["results"]["lyric"]
+                                        lyric = lyrics.replace('ti:','Title - ')
+                                        lyric = lyric.replace('ar:','Artist - ')
+                                        lyric = lyric.replace('al:','Album - ')
+                                        removeString = "[1234567890.:]"
+                                        for char in removeString:
+                                            lyric = lyric.replace(char,'')
+                                        cl.sendMessage(msg.to, str(lyric))
+                            except Exception as error:
+                                pass                                        
+        
+                        elif cmd.startswith("img food: "):
+                          if msg._from in admin:
+                                query = msg.text.replace("img food: ","")
+                                r = requests.get("https://cryptic-ridge-9197.herokuapp.com/api/imagesearch/" + query + "?offset=1")
+                                data=r.text
+                                data=json.loads(r.text)
+                                if data != []:
+                                    for food in data:
+                                        cl.sendImageWithURL(msg.to, str(food["url"]))
+                                        
+                        elif cmd.startswith("profilesmule: "):
+                          if msg._from in admin:    
+                            try:
+                                separate = msg.text.split(" ")
+                                smule = msg.text.replace(separate[0] + " ","")
+                                links = ("https://smule.com/"+smule)
+                                ss = ("http://api2.ntcorp.us/screenshot/shot?url={}".format(urllib.parse.quote(links)))
+                                aditmadzs.sendMessage(msg.to, "Sedang Mencari...")
+                                time.sleep(2)
+                                cl.sendMessage(msg.to, "ID Smule : "+smule+"\nLink : "+links)
+                                cl.sendImageWithURL(msg.to, ss)
+                            except Exception as error:
+                                pass                                
+                            	
+                        elif msg.text.lower().startswith("smule: "):
+                          if msg._from in admin:
+                            sep = text.split(" ")
+                            key = text.replace(sep[0] + " ","")
+                            smule = "https://www.smule.com/"+ key
+                            cl.sendMessage(to, "ini id smulenya kak\n" + smule)
+                            cl.sendImageWithURL(msg.to, smule)
+                           	
+                        elif cmd.startswith("meme"):
+                          if msg._from in admin:    
+                            txt = msg.text.split("@")
+                            image = ("http://memegen.link/"+txt[1].replace(" ","_")+"/"+txt[2].replace(" ","_")+"/"+txt[3].replace(" ","_")+".jpg?watermark=none")
+                            cl.sendImageWithURL(msg.to, image)
+          
+
+                        elif cmd.startswith("ytmp4: "):
+                          if msg._from in admin:
+                            try:
+                                sep = msg.text.split(" ")
+                                textToSearch = msg.text.replace(sep[0] + " ","")
+                                query = urllib.parse.quote(textToSearch)
+                                search_url="https://www.youtube.com/results?search_query="
+                                mozhdr = {'User-Agent': 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3'}
+                                sb_url = search_url + query
+                                sb_get = requests.get(sb_url, headers = mozhdr)
+                                soupeddata = BeautifulSoup(sb_get.content, "html.parser")
+                                yt_links = soupeddata.find_all("a", class_ = "yt-uix-tile-link")
+                                x = (yt_links[1])
+                                yt_href =  x.get("href")
+                                yt_href = yt_href.replace("watch?v=", "")
+                                qx = "https://youtu.be" + str(yt_href)
+                                vid = pafy.new(qx)
+                                stream = vid.streams
+                                best = vid.getbest()
+                                best.resolution, best.extension
+                                for s in stream:
+                                    me = best.url
+                                    hasil = ""
+                                    title = "Judul [ " + vid.title + " ]"
+                                    author = '\n\n⏩Author : ' + str(vid.author)
+                                    durasi = '\n⏩Duration : ' + str(vid.duration)
+                                    suka = '\n⏩Likes : ' + str(vid.likes)
+                                    rating = '\n⏩Rating : ' + str(vid.rating)
+                                    deskripsi = '\n⏩Deskripsi : ' + str(vid.description)
+                                cl.sendVideoWithURL(msg.to, me)
+                                cl.sendMessage(msg.to,title+ author+ durasi+ suka+ rating+ deskripsi)
+                            except Exception as e:
+                                cl.sendMessage(msg.to,str(e))
+
+                        elif cmd.startswith("ytmp3: "):
+                          if msg._from in admin:
+                            try:
+                                sep = msg.text.split(" ")
+                                textToSearch = msg.text.replace(sep[0] + " ","")
+                                query = urllib.parse.quote(textToSearch)
+                                search_url="https://www.youtube.com/results?search_query="
+                                mozhdr = {'User-Agent': 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3'}
+                                sb_url = search_url + query
+                                sb_get = requests.get(sb_url, headers = mozhdr)
+                                soupeddata = BeautifulSoup(sb_get.content, "html.parser")
+                                yt_links = soupeddata.find_all("a", class_ = "yt-uix-tile-link")
+                                x = (yt_links[1])
+                                yt_href =  x.get("href")
+                                yt_href = yt_href.replace("watch?v=", "")
+                                qx = "https://youtu.be" + str(yt_href)
+                                vid = pafy.new(qx)
+                                stream = vid.streams
+                                bestaudio = vid.getbestaudio()
+                                bestaudio.bitrate
+                                best = vid.getbest()
+                                best.resolution, best.extension
+                                for s in stream:
+                                    shi = bestaudio.url
+                                    me = best.url
+                                    vin = s.url
+                                    hasil = ""
+                                    title = "Judul [ " + vid.title + " ]"
+                                    author = '\n\n⏩Author : ' + str(vid.author)
+                                    durasi = '\n⏩Duration : ' + str(vid.duration)
+                                    suka = '\n⏩Likes : ' + str(vid.likes)
+                                    rating = '\n⏩Rating : ' + str(vid.rating)
+                                    deskripsi = '\n⏩Deskripsi : ' + str(vid.description)
+                                cl.sendImageWithURL(msg.to, me)
+                                cl.sendAudioWithURL(msg.to, shi)
+                                cl.sendMessage(msg.to,title+ author+ durasi+ suka+ rating+ deskripsi)
+                            except Exception as e:
+                                cl.sendMessage(msg.to,str(e))
                             
                         elif cmd.startswith("post "):
                           if msg._from in admin:
@@ -2140,15 +2336,7 @@ def bot(op):
                                zx2.append(zx)
                                zxc += pesan2
                                text = xpesan+ zxc + "ke grup " + str(group.name) +""
-                               cl.sendMessage(receiver, text, contentMetadata={'MENTION':str('{"MENTIONEES":'+json.dumps(zx2).replace(' ','')+'}')}, contentType=0)
-   
-                        elif msg.text.lower().startswith("smule: "):
-                          if msg._from in admin:
-                            sep = text.split(" ")
-                            key = text.replace(sep[0] + " ","")
-                            smule = "https://www.smule.com/"+ key
-                            cl.sendMessage(to, "ini id smulenya kak\n" + smule)
-                            cl.sendImageWithURL(msg.to, smule)
+                               cl.sendMessage(receiver, text, contentMetadata={'MENTION':str('{"MENTIONEES":'+json.dumps(zx2).replace(' ','')+'}')}, contentType=0)                        
                                                             
                         elif cmd.startswith("spamtag: "):
                           if wait["selfbot"] == True:
