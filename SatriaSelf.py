@@ -584,121 +584,122 @@ def help():
     key = Setmain["keyCommand"]
     key = key.title()
     helpMessage = "╭════════════════" + "\n" + \
-                  "║»» SatriaSelf Bots" + "\n" + \
-                  "║»════════════════" + "\n" + \
-                  "║»» Help BOT" + "\n" + \
-                  "║»════════════════" + "\n" + \
-                  "║»» Help " + "\n" + \
-                  "║»» " + key + "About\n" + \
-				  "║»» " + key + "Close\n" + \
-				  "║»» " + key + "Ginfo\n" + \
-				  "║»» " + key + "Gruplist\n" + \
-				  "║»» " + key + "Info 「@」\n" + \
-				  "║»» " + key + "「@」Kick\n" + \
-				  "║»» " + key + "Me\n" + \
-                  "║»» " + key + "Mid「@」\n" + \
-				  "║»» " + key + "Mybot\n" + \
-                  "║»» " + key + "Mymid\n" + \
-				  "║»» " + key + "Open\n" + \
-				  "║»» " + key + "Respon\n" + \
-				  "║»» " + key + "Restart\n" + \
-				  "║»» " + key + "Runtime\n" + \
-				  "║»» " + key + "Speed/Sp\n" + \
-                  "║»» " + key + "Sprespon\n" + \
-				  "║»» " + key + "Stealname「@」\n" + \
-                  "║»» " + key + "Stealbio「@」\n" + \
-                  "║»» " + key + "Stealcover「@」\n" + \
-				  "║»» " + key + "Stealpicture「@」\n" + \
-                  "║»» " + key + "Stealvideoprofile「@」\n" + \
-                  "║»═══════════════" + "\n" + \
-                  "║»» Help Admin " + "\n" + \
-                  "║»═══════════════" + "\n" + \
-                  "║»» List Menu " + "\n" + \
-                  "║»» " + key + "Admin:on\n" + \
-                  "║»» " + key + "Admin:repeat\n" + \
-                  "║»» " + key + "Sider「on/off」\n" + \
-                  "║»» " + key + "tag\n" + \
-				  "║»» " + key + "Cctv [ on/off ]\n" + \
-                  "║»» " + key + "Cyduk\n" + \
-				  "║»» " + key + "Dor\n" + \
-                  "║»» " + key + "Botdell「@」\n" + \
-				  "║»» " + key + "Refresh\n" + \
-				  "║»» " + key + "Staff:on\n" + \
-                  "║»» " + key + "Staff:repeat\n" + \
-                  "║»» " + key + "Staffadd「@」\n" + \
-                  "║»» " + key + "Staffdell「@」\n" + \
-                  "║»══════════════" + "\n" + \
-                  "║»» Help CREATOR " + "\n" + \
-                  "║»══════════════" + "\n" + \
-                  "║»» List Menu " + "\n" + \
-                  "║»» " + key + "Adminadd [ @ ]\n" + \
-                  "║»» " + key + "Admindell「@」\n" + \
-                  "║»» " + key + "Listadmin\n" + \
-                  "║»» " + key + "Listbot\n" + \
-                  "║»» " + key + "Listprotect\n" + \
-                  "║»» " + key + "Cek spam\n" + \
-                  "║»» " + key + "Cek pesan\n" + \
-                  "║»» " + key + "Cek respon\n" + \
-                  "║»» " + key + "Cek welcome\n" + \
-                  "║»» " + key + "Cek leave\n" + \
-                  "║»» " + key + "Set spam:「Text」\n" + \
-                  "║»» " + key + "Set pesan:「Text」\n" + \
-                  "║»» " + key + "Set respon:「Text」\n" + \
-                  "║»» " + key + "Set welcome:「Text」\n" + \
-                  "║»» " + key + "Set leave:「Text」\n" + \
-                  "║»» " + key + "Myname:「Name」\n" + \
-                  "║»» " + key + "Satup「Foto」\n" + \
-                  "║»» " + key + "Bot1up「Foto」\n" + \
-                  "║»» " + key + "Bot2up「Foto」\n" + \
-				  "║»» " + key + "Bot3up「Foto」\n" + \
-                  "║»» " + key + "Gift:「Mid」「Jumlah」\n" + \
-                  "║»» " + key + "Spam:「Mid」「Jumlah」\n" + \
-				  "║»» " + key + "Spamtag:「jumlahnya」\n" + \
-                  "║»» " + key + "Spamtag「@」\n" + \
-                  "║»» " + key + "Spamcall:「jumlahnya」\n" + \
-                  "║»» " + key + "Spamcall\n" + \
-                  "║»» " + key + "Broadcast:「Text」\n" + \
-                  "║»» " + key + "Setkey「New Key」\n" + \
-                  "║»» " + key + "Mykey\n" + \
-                  "║»» " + key + "Resetkey\n" + \
-				  "║»» " + key + "Bot「on/off」\n" + \
-				  "║»═══════════════" + "\n" + \
-                  "║»» Help Blacklist " + "\n" + \
-                  "║»═══════════════" + "\n" + \
-                  "║»» List Menu " + "\n" + \
-                  "║»» " + key + "Banlist\n" + \
-				  "║»» " + key + "Ban:on\n" + \
-                  "║»» " + key + "Blc\n" + \
-				  "║»» " + key + "Clearban\n" + \
-				  "║»» " + key + "Refresh\n" + \
-				  "║»» " + key + "Unban「@」\n" + \
-				  "║»» " + key + "Unban:on\n" + \
-				  "║»════════════════" + "\n" + \
-                  "║» Help Setting " + "\n" + \
-                  "║»════════════════" + "\n" + \
-                  "║»» List Menu " + "\n" + \
-                  "║»» " + key + "Autoadd「on/off」\n" + \
-				  "║»» " + key + "Autojoin「on/off」\n" + \
-				  "║»» " + key + "Autoleave「on/off」\n" + \
-				  "║»» " + key + "Contact「on/off」\n" + \
-				  "║»» " + key + "Jointicket「on/off」\n" + \
-				  "║»» " + key + "Respon「on/off」\n" + \
-				  "║»» " + key + "Unsend「on/off」\n" + \
-                  "║»» " + key + "Welcome「on/off」\n" + \
-                  "║»════════════════" + "\n" + \
-                  "║»» Help Protect " + "\n" + \
-                  "║»═══════════════" + "\n" + \
-                  "║»» List Menu " + "\n" + \
-				  "║»» " + key + "Join all\n" + \
-				  "║»» " + key + "Satpro 「on/off」\n" + \
-                  "║»» " + key + "Notag「on/off」\n" + \
-                  "║»» " + key + "Protecturl「on/off」\n" + \
-                  "║»» " + key + "Protectjoin「on/off」\n" + \
-                  "║»» " + key + "Protectkick「on/off」\n" + \
-                  "║»» " + key + "Protectcancel「on/off」\n" + \
-                  "║»» " + key + "Protectinvite「on/off」\n" + \
-				  "║»══════════════" + "\n" + \
-                  "║» http://line.me/ti/p/~iia008" + "\n" + \
+                  "╠❂➣ SatriaSelf Bots" + "\n" + \
+                  "╠════════════════" + "\n" + \
+                  "╠❂➣ Help BOT" + "\n" + \
+                  "╠════════════════" + "\n" + \
+                  "╠❂➣ Help " + "\n" + \
+                  "╠❂➣ " + key + "About\n" + \
+				  "╠❂➣ " + key + "Close\n" + \
+				  "╠❂➣ " + key + "Ginfo\n" + \
+				  "╠❂➣ " + key + "Gruplist\n" + \
+				  "╠❂➣ " + key + "Info 「@」\n" + \
+				  "╠❂➣ " + key + "「@」Kick\n" + \
+				  "╠❂➣ " + key + "Me\n" + \
+                  "╠❂➣ " + key + "Mid「@」\n" + \
+				  "╠❂➣ " + key + "Mybot\n" + \
+                  "╠❂➣ " + key + "Mymid\n" + \
+				  "╠❂➣ " + key + "Open\n" + \
+				  "╠❂➣ " + key + "Respon\n" + \
+				  "╠❂➣ " + key + "Restart\n" + \
+				  "╠❂➣ " + key + "Runtime\n" + \
+				  "╠❂➣ " + key + "Speed/Sp\n" + \
+                  "╠❂➣ " + key + "Sprespon\n" + \
+				  "╠❂➣ " + key + "Stealname「@」\n" + \
+                  "╠❂➣ " + key + "Stealbio「@」\n" + \
+                  "╠❂➣ " + key + "Stealcover「@」\n" + \
+				  "╠❂➣ " + key + "Stealpicture「@」\n" + \
+                  "╠❂➣ " + key + "Stealvideoprofile「@」\n" + \
+                  "╠═══════════════" + "\n" + \
+                  "╠❂➣ Help Admin " + "\n" + \
+                  "╠═══════════════" + "\n" + \
+                  "╠❂➣ List Menu " + "\n" + \
+                  "╠❂➣ " + key + "Admin:on\n" + \
+                  "╠❂➣ " + key + "Admin:repeat\n" + \
+                  "╠❂➣ " + key + "Sider「on/off」\n" + \
+                  "╠❂➣ " + key + "biji\n" + \
+                  "╠❂➣ " + key + "absen\n" + \
+                  "╠❂➣ " + key + "haii\n" + \
+				  "╠❂➣ " + key + "Cctv [ on/off ]\n" + \
+                  "╠❂➣ " + key + "Cyduk\n" + \
+				  "╠❂➣ " + key + "Musik: [ judul lagu & penyanyinya ]\n" + \
+				  "╠❂➣ " + key + "Ytmp3:  [ Judul lagu & penyanyinya ]\n" + \
+				  "╠❂➣ " + key + "Ytmp4: [ Judul lagu & penyanyinya ]\n" + \
+                  "╠❂➣ " + key + "Botdell「@」\n" + \
+				  "╠❂➣ " + key + "Refresh\n" + \
+				  "╠❂➣ " + key + "Staff:on\n" + \
+                  "╠❂➣ " + key + "Staff:repeat\n" + \
+                  "╠❂➣ " + key + "Staffadd「@」\n" + \
+                  "╠❂➣ " + key + "Staffdell「@」\n" + \
+                  "╠══════════════" + "\n" + \
+                  "╠❂➣ Help CREATOR " + "\n" + \
+                  "╠══════════════" + "\n" + \
+                  "╠❂➣ List Menu " + "\n" + \
+                  "╠❂➣ " + key + "Adminadd [ @ ]\n" + \
+                  "╠❂➣ " + key + "Admindell「@」\n" + \
+                  "╠❂➣ " + key + "Listadmin\n" + \
+                  "╠❂➣ " + key + "Listbot\n" + \
+                  "╠❂➣ " + key + "Listprotect\n" + \
+                  "╠❂➣ " + key + "Cek spam\n" + \
+                  "╠❂➣ " + key + "Cek pesan\n" + \
+                  "╠❂➣ " + key + "Cek respon\n" + \
+                  "╠❂➣ " + key + "Cek welcome\n" + \
+                  "╠❂➣ " + key + "Cek leave\n" + \
+                  "╠❂➣ " + key + "Set spam:「Text」\n" + \
+                  "╠❂➣ " + key + "Set pesan:「Text」\n" + \
+                  "╠❂➣ " + key + "Set respon:「Text」\n" + \
+                  "╠❂➣ " + key + "Set welcome:「Text」\n" + \
+                  "╠❂➣ " + key + "Set leave:「Text」\n" + \
+                  "╠❂➣ " + key + "Myname:「Name」\n" + \
+                  "╠❂➣ " + key + "Satup「Foto」\n" + \
+                  "╠❂➣ " + key + "Gift:「Mid」「Jumlah」\n" + \
+                  "╠❂➣ " + key + "Spam:「Mid」「Jumlah」\n" + \
+				  "╠❂➣ " + key + "Spamtag:「jumlahnya」\n" + \
+                  "╠❂➣ " + key + "Spamtag「@」\n" + \
+                  "╠❂➣ " + key + "Spamcall:「jumlahnya」\n" + \
+                  "╠❂➣ " + key + "Spamcall\n" + \
+                  "╠❂➣ " + key + "Broadcast:「Text」\n" + \
+                  "╠❂➣ " + key + "Setkey「New Key」\n" + \
+                  "╠❂➣ " + key + "Mykey\n" + \
+                  "╠❂➣ " + key + "Resetkey\n" + \
+				  "╠❂➣ " + key + "Bot「on/off」\n" + \
+				  "╠═══════════════" + "\n" + \
+                  "╠❂➣ Help Blacklist " + "\n" + \
+                  "╠═══════════════" + "\n" + \
+                  "╠❂➣ List Menu " + "\n" + \
+                  "╠❂➣ " + key + "Banlist\n" + \
+				  "╠❂➣ " + key + "Ban:on\n" + \
+                  "╠❂➣ " + key + "Blc\n" + \
+				  "╠❂➣ " + key + "Clearban\n" + \
+				  "╠❂➣ " + key + "Refresh\n" + \
+				  "╠❂➣ " + key + "Unban「@」\n" + \
+				  "╠❂➣ " + key + "Unban:on\n" + \
+				  "╠════════════════" + "\n" + \
+                  "╠❂➣ Help Setting " + "\n" + \
+                  "╠════════════════" + "\n" + \
+                  "╠❂➣ List Menu " + "\n" + \
+                  "╠❂➣ " + key + "Autoadd「on/off」\n" + \
+				  "╠❂➣ " + key + "Autojoin「on/off」\n" + \
+				  "╠❂➣ " + key + "Autoleave「on/off」\n" + \
+				  "╠❂➣ " + key + "Contact「on/off」\n" + \
+				  "╠❂➣ " + key + "Jointicket「on/off」\n" + \
+				  "╠❂➣ " + key + "Respon「on/off」\n" + \
+				  "╠❂➣ " + key + "Unsend「on/off」\n" + \
+                  "╠❂➣ " + key + "Welcome「on/off」\n" + \
+                  "╠════════════════" + "\n" + \
+                  "╠❂➣ Help Protect " + "\n" + \
+                  "╠═══════════════" + "\n" + \
+                  "╠❂➣ List Menu " + "\n" + \
+				  "╠❂➣ " + key + "Join all\n" + \
+				  "╠❂➣ " + key + "Satpro 「on/off」\n" + \
+                  "╠❂➣ " + key + "Notag「on/off」\n" + \
+                  "╠❂➣ " + key + "Protecturl「on/off」\n" + \
+                  "╠❂➣ " + key + "Protectjoin「on/off」\n" + \
+                  "╠❂➣ " + key + "Protectkick「on/off」\n" + \
+                  "╠❂➣ " + key + "Protectcancel「on/off」\n" + \
+                  "╠❂➣ " + key + "Protectinvite「on/off」\n" + \
+				  "╠══════════════" + "\n" + \
+                  "╠❂➣ http://line.me/ti/p/~iia008" + "\n" + \
                   "╰═══ CREATOR: ©Satria™"
     return helpMessage
 
@@ -1399,17 +1400,16 @@ def bot(op):
 
                         elif cmd == "creator" or text.lower() == 'creator':
                             if msg._from in admin:
-                                cl.sendMessage(msg.to,"⏩⏩ᴄʀᴇᴀᴛᴏʀ ᴮᴼᵀᵀᴿᴼˣʙᴏᴛsˢᴱᴸᶠ ⏪⏪") 
-                                ma = ""
-                                for i in creator:
-                                    ma = cl.getContact(i)
-                                    cl.sendMessage(msg.to, None, contentMetadata={'mid': i}, contentType=13)
+                               cl.sendMessage(msg.to, "╔─[ ⊰์◉⊱B❂TTR❂X B❂T$⊰์◉⊱ ]─╗\n╠❂➣ MY CREATOR \n")
+                               cl.sendContact(msg.to, "u1608ae21e5de2547b5fa8707b21ca220")
+                               cl.sendMessage(msg.to, "╚────[ ᴮᴼᵀᵀᴿᴼˣʙᴏᴛsˢᴱᴸᶠ ]────╝")
 
                         elif cmd == "about" or cmd == "About":
                           if wait["selfbot"] == True:
                             if msg._from in admin:
                                sendMention(msg.to, sender, "「 BotTrox BOT 」\n")
                                cl.sendMessage(msg.to, None, contentMetadata={'mid': mid}, contentType=13)
+                               cl.sendImageWithURL(to, 'https://avatars0.githubusercontent.com/u/37049360?v=4')
 
                         elif cmd == "me" or text.lower() == 'mek':
                           if wait["selfbot"] == True:
@@ -1464,9 +1464,23 @@ def bot(op):
                         elif cmd == "mybot":
                           if wait["selfbot"] == True:
                             if msg._from in admin:
+                               cl.sendMessage(msg.to, "╔─[ ⊰์◉⊱B❂TTR❂X B❂T$⊰์◉⊱ ]─╗\n╠❂➣ MY BOTS TEAM\n")
                                msg.contentType = 13
                                msg.contentMetadata = {'mid': mid}
                                cl.sendMessage1(msg)
+                               cl.sendContact(msg.to, "u9a3947a3947b568f264b1584a8c791bf")
+                               cl.sendContact(msg.to, "u030a264c24f957ccf2388bab6fadffe8")
+                               cl.sendContact(msg.to, "u3bc96c4457042e18c71c61b23f2dde72")
+                               cl.sendContact(msg.to, "u73abe1f40b294203111ed9eb66564708")
+                               cl.sendContact(msg.to, "u13c44e1c33d853effdda460eb408eceb")
+                               cl.sendContact(msg.to, "u345f29417fc28a310f90ff4ee16b3d76")
+                               cl.sendContact(msg.to, "u07fff90ec4c33e18a23c76eefbadb7ce")
+                               cl.sendContact(msg.to, "ubd3be894b483e90be0a75524d5df522c")
+                               cl.sendContact(msg.to, "u6882ac8f90063f82f1948c8c31ae7405")
+                               cl.sendContact(msg.to, "u141397ac1e3188035f8ca9f514c10caf")
+                               cl.sendContact(msg.to, "u67d9e2f8ef3a144a4f42a16fd232c75b")
+                               cl.sendMessage(msg.to, "╚─[ ⊰์◉⊱B❂TTR❂X B❂T$⊰์◉⊱ ]─╝")
+                               cl.sendImageWithURL(to, 'https://avatars0.githubusercontent.com/u/37049360?v=4')
 
                         elif text.lower() == "remove chat":
                           if wait["selfbot"] == True:
